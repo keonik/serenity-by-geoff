@@ -1,9 +1,8 @@
 import { Link } from "@remix-run/react";
-import React from "react";
 
 function Footer() {
 	return (
-		<footer className="bg-muted text-muted-foreground p-4 text-center min-h-52">
+		<footer className="bg-muted text-muted-foreground p-10 text-center">
 			<div className=" flex h-full content-stretch justify-between container items-center">
 				<div className="basis-1/2 grid grid-cols-1 gap-2">
 					<Link to="/about">About</Link>

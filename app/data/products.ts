@@ -9,6 +9,11 @@ export interface Product {
 	image: string;
 }
 
+export const productDescriptions: Record<string, string> = {
+	"romeos-rodeo": "Hints of hay and a little bit of sass.",
+	"now-we-wait": "This one is a little bit of a mystery.",
+};
+
 function getProductsFromDirectory(): Product[] {
 	const productsDirectory = path.join(process.cwd(), "public", "products");
 	const fileNames = fs.readdirSync(productsDirectory);
@@ -25,7 +30,9 @@ function getProductsFromDirectory(): Product[] {
 			return {
 				id,
 				name,
-				description: `Experience the refreshing scent of ${name}.`,
+				description:
+					productDescriptions[name] ??
+					`Experience the refreshing scent of ${name}.`,
 				price: 9.99 + Math.random() * 5, // Random price between 9.99 and 14.99
 				image: `/products/${fileName}`,
 			};
