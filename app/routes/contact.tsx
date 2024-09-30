@@ -1,46 +1,31 @@
 import type { MetaFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
+import { Trash2 } from "lucide-react";
 import { Button } from "~/components/ui/button";
-import { Input } from "~/components/ui/input";
-import { Textarea } from "~/components/ui/textarea";
 
 export const meta: MetaFunction = () => {
-  return [
-    { title: "Contact Us | My Remix App" },
-    { name: "description", content: "Get in touch with us" },
-  ];
+	return [
+		{ title: "Contact Us | Serenity by Geoff" },
+		{ name: "description", content: "Get in touch with us" },
+	];
 };
 
-export default function Contact() {
-  return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-6">Contact Us</h1>
-      <form className="space-y-4 max-w-md">
-        <div>
-          <label htmlFor="name" className="block text-sm font-medium mb-1">
-            Name
-          </label>
-          <Input id="name" placeholder="Your name" />
-        </div>
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium mb-1">
-            Email
-          </label>
-          <Input id="email" type="email" placeholder="your@email.com" />
-        </div>
-        <div>
-          <label htmlFor="message" className="block text-sm font-medium mb-1">
-            Message
-          </label>
-          <Textarea id="message" placeholder="Your message" />
-        </div>
-        <Button type="submit">Send Message</Button>
-      </form>
-      <div className="mt-8">
-        <Button asChild variant="outline">
-          <Link to="/">Back to Home</Link>
-        </Button>
-      </div>
-    </div>
-  );
+export default function About() {
+	return (
+		<div className="container mx-auto px-4 py-8 max-w-prose">
+			<h1 className="text-4xl font-bold mb-6">About Our Philosophy</h1>
+			<blockquote className="text-xl italic mb-8 pl-4 border-l-4 border-gray-300">
+				"I set the rules, and you follow them blindly, okay? And if you have a
+				problem with that, then you can talk to our complaint department. It's a
+				trashcan."
+				<footer className="text-right mt-2">— Michael Scott</footer>
+			</blockquote>
+			<span className="flex flex-col items-center p-4">
+				<Trash2 className="size-20 stroke-secondary" />
+			</span>
+			<Button asChild>
+				<Link to="/">Back to Home</Link>
+			</Button>
+		</div>
+	);
 }

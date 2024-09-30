@@ -1,13 +1,19 @@
 <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
   <style>
-    .flame { fill: #FFA500; }
-    .wax { fill: #F0F0F0; }
-    .wick { fill: #8B4513; }
+    :root {
+         --primary: #2563EB;
+        --primary-foreground: #F8FAFC;
+    }
+    .soap { fill: var(--primary); }
+    .bubbles { fill: var(--primary-foreground); opacity: 0.7; }
   </style>
   
-  <!-- Candle base -->
-  <rect class="wax" x="35" y="40" width="30" height="55" rx="2" ry="2" />
+  <!-- Soap bar -->
+  <rect class="soap" x="10" y="30" width="80" height="40" rx="10" ry="10" />
   
-  <!-- Flame -->
-  <path class="flame" d="M50 5 Q60 20 55 30 Q45 40 50 5 Z" />
+  <!-- Bubbles -->
+  <circle class="bubbles" cx="30" cy="45" r="5" />
+  <circle class="bubbles" cx="70" cy="55" r="4" />
+  <circle class="bubbles" cx="50" cy="40" r="3" />
+  <circle class="bubbles" cx="80" cy="50" r="2" />
 </svg>
