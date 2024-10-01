@@ -19,6 +19,7 @@ import {
   ThemeProvider,
   useTheme,
 } from "remix-themes";
+import { Toaster } from "~/components/ui/sonner";
 import Footer from "./components/footer";
 import { Header } from "./components/header";
 import { buttonVariants } from "./components/ui/button";
@@ -72,9 +73,10 @@ export function App() {
       </head>
       <body className="">
         <div className="min-h-screen flex flex-col">
-          <main className="flex-grow">
+          <main>
             <Header />
             <Outlet />
+            <Toaster />
           </main>
           <Footer />
         </div>

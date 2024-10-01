@@ -9,9 +9,28 @@ export interface Product {
 	image: string;
 }
 
-export const productDescriptions: Record<string, string> = {
-	"romeos-rodeo": "Hints of hay and a little bit of sass.",
-	"now-we-wait": "This one is a little bit of a mystery.",
+export const STATIC_PRODUCTS: Record<string, Product> = {
+	"romeos-rodeo": {
+		id: "1",
+		name: "Romeo's Rodeo",
+		price: 6.99,
+		description: "Hints of hay and a little bit of sass.",
+		image: "/products/romeos-rodeo.webp",
+	},
+	"now-we-wait": {
+		id: "2",
+		name: "Now we Wait",
+		description: "This one is a little bit of a mystery.",
+		image: "/products/now-we-wait.webp",
+		price: 8.99,
+	},
+	"bar-wood": {
+		id: "3",
+		name: "Whiskey",
+		description: "My safe word is whiskey.",
+		image: "/products/bar-wood.webp",
+		price: 9.99,
+	},
 };
 
 function getProductsFromDirectory(): Product[] {
@@ -22,20 +41,20 @@ function getProductsFromDirectory(): Product[] {
 		.filter((fileName) => fileName.endsWith(".webp"))
 		.map((fileName) => {
 			const id = fileName.replace(/\.(png|jpg|jpeg|webp)$/, "");
-			const name = id
+			let name = id
 				.split("-")
 				.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
 				.join(" ");
-
-			return {
-				id,
-				name,
-				description:
-					productDescriptions[name] ??
-					`Experience the refreshing scent of ${name}.`,
-				price: 9.99 + Math.random() * 5, // Random price between 9.99 and 14.99
-				image: `/products/${fileName}`,
-			};
+			const existingProduct = STATIC_PRODUCTS[id];
+			return (
+				existingProduct ?? {
+					id,
+					name,
+					description: `Experience the refreshing scent of ${name}.`,
+					price: 9.99 + Math.random() * 5, // Random price between 9.99 and 14.99
+					image: `/products/${fileName}`,
+				}
+			);
 		});
 }
 
